@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouran Mohsen | Network Security & Cybersecurity Specialist</title>
+    <link rel="icon" type="image/png" href="icon2.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: JetBrains Mono & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        themeBg: 'var(--bg-main)',
+                        themeCard: 'var(--bg-card)',
+                        themeCardBorder: 'var(--border-color)',
+                        themeText: 'var(--text-main)',
+                        themeMuted: 'var(--text-muted)',
+                        themeAccent: 'var(--accent-color)',
+                        themeAccentBg: 'var(--accent-bg)',
+                        themeBadgeBg: 'var(--badge-bg)',
+                        themeTerminalBg: 'var(--terminal-bg)',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS Variables for Dynamic Light & Dark Mode */
+        .text-lavenderAccent {
+            color: var(--lavender-accent);
+            transition: color 0.3s ease;
+        }
+
+        :root {
+            --lavender-accent: #7c3aed;
+            --bg-main: #FDFBF7;
+            --bg-card: #FFFFFF;
+            --border-color: rgba(0, 0, 0, 0.07);
+            --text-main: #1E1E24;
+            --text-muted: #666570;
+            --accent-color: #E87A90;
+            --accent-bg: #FDF0ED;
+            --badge-bg: #EBF0FF;
+            --terminal-bg: #1E1B24;
+            --terminal-text: #E2E8F0;
+        }
+
+        [data-theme="dark"] {
+            --lavender-accent: #b794f4;
+            --bg-main: #0F1117;
+            --bg-card: #181B24;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --accent-color: #F472B6;
+            --accent-bg: #2A1725;
+            --badge-bg: #1E293B;
+            --terminal-bg: #090A0F;
+            --terminal-text: #F1F5F9;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .glass-header {
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .terminal-glow {
+            box-shadow: 0 20px 40px -15px rgba(232, 122, 144, 0.15);
+        }
+
+        [data-theme="dark"] .terminal-glow {
+            box-shadow: 0 20px 40px -15px rgba(244, 114, 182, 0.1);
+        }
+
+        .custom-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .custom-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="font-sans selection:bg-rose-200 selection:text-slate-900 overflow-x-hidden">
+
+    <!-- Navigation Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 glass-header bg-themeBg/80 border-b border-themeCardBorder transition-colors">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="#" class="font-mono text-lg md:text-xl font-bold tracking-tight flex items-center gap-2">
+                <span class="text-themeAccent">&gt;</span>
+                <span>Nouran Mohsen<span class="text-themeAccent">.sec</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-7 font-medium text-sm text-themeMuted">
+                <a href="#about" class="hover:text-themeAccent transition-colors">01. About</a>
+                <a href="#skills" class="hover:text-themeAccent transition-colors">02. Toolkit</a>
+                <a href="#projects" class="hover:text-themeAccent transition-colors">03. Projects</a>
+                <a href="#labs" class="hover:text-themeAccent transition-colors">04. Labs</a>
+                <a href="#certs" class="hover:text-themeAccent transition-colors">05. Certs</a>
+                <a href="#journey" class="hover:text-themeAccent transition-colors">06. Journey</a>
+                <a href="#contact" class="hover:text-themeAccent transition-colors">07. Contact</a>
+            </nav>
+
+            <!-- Actions & Theme Toggle -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle"
+                    class="w-10 h-10 rounded-full bg-themeCard border border-themeCardBorder flex items-center justify-center text-themeText hover:border-themeAccent transition-all shadow-sm"
+                    aria-label="Toggle Theme">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="https://www.linkedin.com/in/nouranelsebaie/" target="_blank"
+                    class="hidden sm:inline-flex px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold bg-themeText text-themeBg hover:opacity-90 transition-all shadow-sm">
+                    Hire Me <i class="fa-solid fa-arrow-up-right-from-square ml-1.5 text-xs"></i>
+                </a>
+
+                <button id="mobileMenuBtn" class="md:hidden text-xl text-themeText ml-1 focus:outline-none"
+                    aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+            class="hidden md:hidden bg-themeBg/95 backdrop-blur-lg border-b border-themeCardBorder px-6 py-6 transition-all">
+            <nav class="flex flex-col gap-4 font-mono text-sm">
+                <a href="#about" class="mobile-link py-2 border-b border-themeCardBorder">01. // About</a>
+                <a href="#skills" class="mobile-link py-2 border-b border-themeCardBorder">02. // Toolkit</a>
+                <a href="#projects" class="mobile-link py-2 border-b border-themeCardBorder">03. // Projects</a>
+                <a href="#labs" class="mobile-link py-2 border-b border-themeCardBorder">04. // Labs</a>
+                <a href="#certs" class="mobile-link py-2 border-b border-themeCardBorder">05. // Certs</a>
+                <a href="#journey" class="mobile-link py-2 border-b border-themeCardBorder">06. // Journey</a>
+                <a href="#contact" class="mobile-link py-2">07. // Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-28 pb-16 md:pt-36 flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+            <!-- Left Info -->
+            <div class="lg:col-span-7 space-y-6 text-left">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-themeAccentBg border border-themeCardBorder text-xs font-bold text-themeAccent">
+                    <span class="w-2 h-2 rounded-full bg-themeAccent animate-ping"></span>
+                    Available for internships & entry-level opportunities
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-themeText tracking-tight leading-tight">
+                    Networks. <br>
+                    <span class="text-themeAccent">Secured.</span> <br>
+                    Purposefully.
+                </h1>
+
+                <p class="text-base sm:text-lg text-themeMuted max-w-xl leading-relaxed">
+                    Communication & Electronics Engineering graduate focused on <strong
+                        class="text-themeText font-semibold">Network Security and Cybersecurity</strong>. I bridge the
+                    gap between network design and hands-on security analysis.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#projects"
+                        class="px-7 py-3.5 rounded-full font-semibold text-white bg-themeAccent shadow-lg shadow-themeAccent/20 hover:opacity-90 transition-all text-sm">
+                        Explore my work <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact"
+                        class="px-7 py-3.5 rounded-full font-semibold text-themeText bg-themeCard border border-themeCardBorder hover:border-themeAccent transition-all text-sm">
+                        Get in touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right CLI Interactive Terminal Box -->
+            <div class="lg:col-span-5 ">
+                <div
+                    class="rounded-3xl bg-slate-900 border border-slate-700/60 overflow-hidden shadow-2xl font-mono text-sm terminal-glow">
+                    <!-- Top Window Control Bar -->
+                    <div
+                        class="bg-slate-800/80 px-4 py-3 flex items-center justify-between border-b border-slate-700/50">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                        </div>
+                        <span class="text-slate-400 text-xs font-semibold">nouran@security-console:~</span>
+                        <i class="fa-solid fa-shield-halved text-lavenderAccent"></i>
+                    </div>
+
+                    <!-- Terminal Content -->
+                    <div class="p-6 space-y-4 text-slate-200">
+                        <div>
+                            <p class="text-rose-400 font-semibold"><span
+                                    class="text-emerald-400">nouran@portfolio:~$</span> whoami</p>
+                            <p class="text-slate-300 text-xs mt-1 pl-4 border-l-2 border-rose-400/40">Network Security &
+                                Cybersecurity Graduate</p>
+                        </div>
+
+                        <div>
+                            <p class="text-rose-400 font-semibold"><span
+                                    class="text-emerald-400">nouran@portfolio:~$</span> focus --list</p>
+                            <ul class="text-slate-300 text-xs mt-1 pl-4 space-y-1">
+                                <li class="text-emerald-300">[+] Network Security</li>
+                                <li class="text-emerald-300">[+] Security Analysis</li>
+                                <li class="text-emerald-300">[+] Penetration Testing</li>
+                                <li class="text-emerald-300">[+] Hands-on Security Labs</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p class="text-rose-400 font-semibold"><span
+                                    class="text-emerald-400">nouran@portfolio:~$</span> status</p>
+                            <p class="text-amber-300 text-xs mt-1 pl-4">Ready to learn. Ready to contribute. <span
+                                    class="animate-pulse">_</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 01 / About Me -->
+    <section id="about" class="py-24 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">01 / About
+                        me</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-themeText">Engineering thinking, security mindset.
+                    </h2>
+                    <p class="text-themeMuted text-sm sm:text-base leading-relaxed">
+                        My engineering background gave me a strong foundation in communication and networking. I have
+                        worked with routing, switching, network segmentation, wireless communication concepts, and
+                        troubleshooting — and now apply that foundation to cybersecurity.
+                    </p>
+
+                    <div class="pt-4 space-y-3 font-mono text-xs">
+                        <div class="p-4 rounded-2xl custom-card flex items-center justify-between">
+                            <span class="text-themeMuted"><i
+                                    class="fa-solid fa-graduation-cap text-themeAccent mr-2"></i> Mansoura
+                                University</span>
+                            <span class="font-bold text-themeText">2021 - 2026</span>
+                        </div>
+                        <div class="p-4 rounded-2xl custom-card flex items-center justify-between">
+                            <span class="text-themeMuted"><i class="fa-solid fa-language text-themeAccent mr-2"></i>
+                                Arabic (Native) / English (Very Good)</span>
+                            <span class="font-bold text-emerald-500">Bilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-3xl custom-card space-y-2">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-lg mb-4">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="font-bold text-themeText text-lg">Design</h3>
+                        <p class="text-themeMuted text-sm">Simulate structured enterprise networks with Cisco
+                            technologies and GNS3.</p>
+                    </div>
+
+                    <div class="p-6 rounded-3xl custom-card space-y-2">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-lg mb-4">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-bold text-themeText text-lg">Protect</h3>
+                        <p class="text-themeMuted text-sm">Implement ACLs, network segmentation, firewall policies, NAT,
+                            and IPsec VPNs.</p>
+                    </div>
+
+                    <div class="p-6 rounded-3xl custom-card space-y-2">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-lg mb-4">
+                            <i class="fa-solid fa-magnifying-glass font-bold"></i>
+                        </div>
+                        <h3 class="font-bold text-themeText text-lg">Analyze</h3>
+                        <p class="text-themeMuted text-sm">Capture traffic with Wireshark, investigate anomalies, and
+                            isolate causes.</p>
+                    </div>
+
+                    <div class="p-6 rounded-3xl custom-card space-y-2">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-lg mb-4">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <h3 class="font-bold text-themeText text-lg">Test</h3>
+                        <p class="text-themeMuted text-sm">Perform controlled reconnaissance, enumeration, and ethical
+                            security testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 / Technical Toolkit -->
+    <section id="skills" class="py-24 bg-themeCard/30 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-14 space-y-3">
+                <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">02 / Technical
+                    toolkit</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-themeText">Built around how networks operate and how they
+                    break.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Category 1 -->
+                <div class="p-8 rounded-3xl custom-card space-y-6">
+                    <h3 class="font-bold text-lg text-themeText flex items-center gap-2">
+                        <i class="fa-solid fa-server text-themeAccent"></i> Networking & Security
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">TCP/IP & OSI</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">VLANs / Inter-VLAN</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">OSPF & BGP</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">STP & Port Security</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">DHCP / DNS</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">NAT / PAT</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">ACLs & AAA</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">DMZ & Segmentation</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Firewall Policies</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">VPN / OpenVPN</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">IDS / IPS</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="p-8 rounded-3xl custom-card space-y-6">
+                    <h3 class="font-bold text-lg text-themeText flex items-center gap-2">
+                        <i class="fa-solid fa-toolbox text-themeAccent"></i> Platforms & Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">OPNsense / pfSense</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Cisco ASA</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Suricata</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Wireshark</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Nmap</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Kali Linux</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Metasploit</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Burp Suite</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Packet Tracer</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">GNS3</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">TryHackMe (Top 7%)</span>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="p-8 rounded-3xl custom-card space-y-6">
+                    <h3 class="font-bold text-lg text-themeText flex items-center gap-2">
+                        <i class="fa-solid fa-code text-themeAccent"></i> Programming & OS
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Python</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">C Language</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">HTML5 & CSS3</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Java</span>
+                        <!-- <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Linux (Ubuntu/Kali)</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-themeBadgeBg text-themeText">Windows Server</span> -->
+                    </div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-textMuted mb-3">Operating Systems
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-mono font-medium"><i
+                                class="fa-brands fa-linux mr-1"></i> Linux</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-mono font-medium"><i
+                                class="fa-brands fa-windows mr-1"></i> Windows / Windows Server</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 03 / Selected Projects -->
+    <section id="projects" class="py-24 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-14 space-y-3">
+                <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">03 / Selected
+                    projects</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-themeText">Security, designed in layers.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Project 1 -->
+                <div class="p-8 rounded-3xl custom-card flex flex-col justify-between space-y-6">
+                    <div class="space-y-3">
+                        <span class="font-mono text-xs font-semibold text-themeAccent">01 / CAPSTONE PROJECT</span>
+                        <h3 class="text-2xl font-bold text-themeText">Predicta - Smart Secure Enterprise Network</h3>
+                        <p class="text-themeMuted text-sm leading-relaxed">
+                            An integrated graduation project combining enterprise networking, Windows Server,
+                            cybersecurity, hybrid cloud, AI, and DevOps. Designed to connect infrastructure, monitoring,
+                            and security thinking in one enterprise-focused solution.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs pt-4 border-t border-themeCardBorder">
+                        <span class="px-3 py-1 rounded-lg bg-themeAccentBg text-themeAccent font-semibold">Enterprise
+                            Networking</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeAccentBg text-themeAccent font-semibold">Windows
+                            Server</span>
+                        <span
+                            class="px-3 py-1 rounded-lg bg-themeAccentBg text-themeAccent font-semibold">Cybersecurity</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeAccentBg text-themeAccent font-semibold">AI /
+                            DevOps</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="p-8 rounded-3xl custom-card flex flex-col justify-between space-y-6">
+                    <div class="space-y-3">
+                        <span class="font-mono text-xs font-semibold text-themeAccent">02 / NETWORK SECURITY</span>
+                        <h3 class="text-2xl font-bold text-themeText">Secure Corporate Network</h3>
+                        <p class="text-themeMuted text-sm leading-relaxed">
+                            Designed and implemented a segmented corporate network in GNS3, with OPNsense firewall
+                            policy, NAT/PAT, OpenVPN, Suricata IDS/IPS, Wireshark analysis, and controlled Kali Linux
+                            security testing.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs pt-4 border-t border-themeCardBorder">
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">GNS3</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">OPNsense</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">Suricata</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">OpenVPN</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="p-8 rounded-3xl custom-card flex flex-col justify-between space-y-6">
+                    <div class="space-y-3">
+                        <span class="font-mono text-xs font-semibold text-themeAccent">03 / ENTERPRISE LAB</span>
+                        <h3 class="text-2xl font-bold text-themeText">Enterprise Network Security Lab</h3>
+                        <p class="text-themeMuted text-sm leading-relaxed">
+                            Built a segmented enterprise topology integrating router-on-a-stick, STP, DHCP, OSPF, ACLs,
+                            DMZ, AAA authentication, VPN, firewall policies, and IDS/IPS defense concepts.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs pt-4 border-t border-themeCardBorder">
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">VLANs</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">OSPF</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">AAA</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">DMZ</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="p-8 rounded-3xl custom-card flex flex-col justify-between space-y-6">
+                    <div class="space-y-3">
+                        <span class="font-mono text-xs font-semibold text-themeAccent">04 / FIREWALL LAB</span>
+                        <h3 class="text-2xl font-bold text-themeText">Cisco ASA Firewall Lab</h3>
+                        <p class="text-themeMuted text-sm leading-relaxed">
+                            Configured ASA interfaces, security levels, NAT rules, ACLs, DMZ access controls, and
+                            traffic filtering in a simulated enterprise environment.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs pt-4 border-t border-themeCardBorder">
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">Cisco ASA</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">NAT / PAT</span>
+                        <span class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">ACLs</span>
+                        <span
+                            class="px-3 py-1 rounded-lg bg-themeBadgeBg text-themeText font-semibold">Troubleshooting</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 / Hands-on Labs -->
+    <section id="labs" class="py-24 bg-themeCard/30 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-14 space-y-3">
+                <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">04 / Hands-on
+                    labs</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-themeText">Practice makes analysis sharper.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl custom-card space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-xl">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-themeText">Web Security</h3>
+                    <p class="text-themeMuted text-sm leading-relaxed">
+                        Hands-on web labs covering HTTP/HTTPS protocols, cookies, DNS, content discovery, directory
+                        enumeration, Burp Suite, and Gobuster analysis.
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl custom-card space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-xl">
+                        <i class="fa-brands fa-linux"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-themeText">Linux Security</h3>
+                    <p class="text-themeMuted text-sm leading-relaxed">
+                        Practical Linux administration and security: command line, file permissions, processes,
+                        services, networking tools, SSH, and vulnerability concepts.
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl custom-card space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-themeAccentBg flex items-center justify-center text-themeAccent text-xl">
+                        <i class="fa-solid fa-flag"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-themeText">TryHackMe & HTB</h3>
+                    <p class="text-themeMuted text-sm leading-relaxed">
+                        Interactive guided challenges focused on networking, enumeration, Metasploit, shells, RDP
+                        security, and penetration-testing fundamentals (TryHackMe Top 7%).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 / Certifications -->
+    <section id="certs" class="py-24 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-14 space-y-3">
+                <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">05 /
+                    Certifications</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-themeText">Learning backed by achievement.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Cert 1 -->
+                <div class="p-8 rounded-3xl custom-card flex flex-col justify-between space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-mono text-xs text-themeAccent font-semibold">THM CERTIFICATE</span>
+                            <h3 class="text-xl font-bold text-themeText mt-1">TryHackMe — Pre Security</h3>
+                        </div>
+                        <span
+                            class="px-3 py-1 rounded-full bg-themeBadgeBg text-themeText font-mono text-xs">Verified</span>
+                    </div>
+                    <p class="text-themeMuted text-sm">
+                        Completed the Pre Security learning path, building foundational knowledge in practical
+                        cybersecurity and network security concepts.
+                    </p>
+                    <div
+                        class="pt-4 border-t border-themeCardBorder flex justify-between items-center text-xs font-mono text-themeMuted">
+                        <span>06 SEP 2026 · 19H 10M</span>
+                        <a href="https://tryhackme.com/certificate/THM-KQFBVYWRTR" target="_blank"
+                            class="text-themeAccent font-bold hover:underline">Verify certificate ↗</a>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="p-8 rounded-3xl custom-card flex flex-col justify-between space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-mono text-xs text-themeAccent font-semibold">NTI TRAINING</span>
+                            <h3 class="text-xl font-bold text-themeText mt-1">Network Security Summer Training</h3>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-themeBadgeBg text-themeText font-mono text-xs">120
+                            Hours</span>
+                    </div>
+                    <p class="text-themeMuted text-sm">
+                        Successfully completed the Network Security summer training program delivered by the National
+                        Telecommunication Institute (NTI).
+                    </p>
+                    <div
+                        class="pt-4 border-t border-themeCardBorder flex justify-between items-center text-xs font-mono text-themeMuted">
+                        <span>31 AUG - 25 SEP 2025</span>
+                        <span class="text-emerald-500 font-bold">NTI Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 / Learning Journey Timeline -->
+    <section id="journey" class="py-24 bg-themeCard/30 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-14 space-y-3">
+                <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">06 / Learning
+                    journey</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-themeText">Focused learning, applied deliberately.</h2>
+            </div>
+
+            <div
+                class="space-y-8 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:w-0.5 before:bg-themeCardBorder">
+
+                <!-- Timeline Item 1 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="w-full md:w-5/12 p-6 rounded-3xl custom-card md:text-right space-y-2">
+                        <span class="font-mono text-xs font-bold text-themeAccent">2025</span>
+                        <h4 class="font-bold text-themeText text-base">Network Security Summer Training · NTI</h4>
+                        <p class="text-themeMuted text-xs leading-relaxed">Hands-on exposure to networking, firewalls,
+                            IDS/IPS, Linux, Wireshark, Kali Linux, and security analysis.</p>
+                    </div>
+                    <div
+                        class="w-8 h-8 rounded-full bg-themeAccent text-white flex items-center justify-center my-4 md:my-0 z-10 shadow-md">
+                        <i class="fa-solid fa-shield text-xs"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 hidden md:block"></div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="w-full md:w-5/12 hidden md:block"></div>
+                    <div
+                        class="w-8 h-8 rounded-full bg-themeAccent text-white flex items-center justify-center my-4 md:my-0 z-10 shadow-md">
+                        <i class="fa-solid fa-shield text-xs"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 p-6 rounded-3xl custom-card space-y-2">
+                        <span class="font-mono text-xs font-bold text-themeAccent">2025 – Present</span>
+                        <h4 class="font-bold text-themeText text-base">Hands-on Cybersecurity Labs</h4>
+                        <p class="text-themeMuted text-xs leading-relaxed">Practicing through hands-on labs on
+                            TryHackMe, PortSwigger, and Hack The Box, with a focus on
+                            web security, enumeration, networking, Linux, and penetration-testing fundamentals.</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 3 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="w-full md:w-5/12 p-6 rounded-3xl custom-card md:text-right space-y-2">
+                        <span class="font-mono text-xs font-bold text-themeAccent">2021 - 2026</span>
+                        <h4 class="font-bold text-themeText text-base">Faculty of Engineering · Mansoura University</h4>
+                        <p class="text-themeMuted text-xs leading-relaxed">Communication & Electronics Engineering. Core
+                            focus on Computer Networks, Network Security, Wireless Comms, and Signals.</p>
+                    </div>
+                    <div
+                        class="w-8 h-8 rounded-full bg-themeAccent text-white flex items-center justify-center my-4 md:my-0 z-10 shadow-md">
+                        <i class="fa-solid fa-graduation-cap text-xs"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 hidden md:block"></div>
+                </div>
+                <!-- Timeline Item 4 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="w-full md:w-5/12 hidden md:block"></div>
+                    <div
+                        class="w-8 h-8 rounded-full bg-themeAccent text-white flex items-center justify-center my-4 md:my-0 z-10 shadow-md">
+                        <i class="fa-solid fa-shield text-xs"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 p-6 rounded-3xl custom-card space-y-2">
+                        <span class="font-mono text-xs font-bold text-themeAccent">Ongoing</span>
+                        <h4 class="font-bold text-themeText text-base">DEPI Trainee & Junior Pentesting</h4>
+                        <p class="text-themeMuted text-xs leading-relaxed">Digital Egypt Pioneers Initiative trainee
+                            practicing web security, networking, and junior penetration testing fundamentals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 / Contact -->
+    <section id="contact" class="py-24 border-t border-themeCardBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center space-y-8">
+                <span class="font-mono text-xs font-bold text-themeAccent uppercase tracking-widest">07 / Contact</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-themeText tracking-tight">Let's secure what's next.
+                </h2>
+                <p class="text-themeMuted text-base sm:text-lg">
+                    Open to entry-level Network Security, penetration testing, and Cybersecurity opportunities.
+                </p>
+
+                <div class="pt-6 flex flex-wrap justify-center gap-4 font-mono text-sm">
+                    <a href="mailto:nouran.mohsen167@gmail.com"
+                        class="px-8 py-4 rounded-full bg-themeText text-themeBg font-bold hover:opacity-90 transition-all flex items-center gap-2">
+                        <i class="fa-regular fa-envelope"></i> Email me
+                    </a>
+                    <a href="https://www.linkedin.com/in/nouranelsebaie/" target="_blank"
+                        class="px-8 py-4 rounded-full bg-themeCard border border-themeCardBorder text-themeText font-bold hover:border-themeAccent transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn ↗
+                    </a>
+                    <a href="https://github.com/nouranelsebaie" target="_blank"
+                        class="px-8 py-4 rounded-full bg-themeCard border border-themeCardBorder text-themeText font-bold hover:border-themeAccent transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-github"></i> GitHub ↗
+                    </a>
+                    <a
+                        class="px-8 py-4 rounded-full bg-themeCard border border-themeCardBorder text-themeText font-bold hover:border-themeAccent transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-phone mr-1"></i> +20 100 320 9368 ↗
+                    </a>
+                    <!-- DOWNLOAD CV -->
+                    <a class="px-8 py-4 rounded-full bg-themeCard border border-themeCardBorder text-themeText font-bold hover:border-themeAccent transition-all flex items-center gap-2"
+                        class="button" href="Nouran-CV.pdf" download>
+                        Download CV ↓
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-themeCardBorder font-mono text-xs text-themeMuted">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© <span id="year"></span> Nouran Mohsen Moustfa</p>
+            <p>Networking + Cybersecurity + Hands-on Problem Solving</p>
+        </div>
+    </footer>
+
+    <!-- Theme & Interactivity Script -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle State Management
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        // Load theme preference or detect system scheme
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        function setTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun', 'text-amber-400');
+            } else {
+                themeIcon.classList.remove('fa-sun', 'text-amber-400');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+        // Initialize theme
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (systemPrefersDark) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
